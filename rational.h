@@ -9,8 +9,8 @@ class rational{
     Type _den;
     bool sign;
 public:
-    rational();
-    explicit rational(Type,Type=1);
+    rational() : _num(1), _den(1) {}
+    explicit rational(Type num,Type den = 1) : _num(num), _den(den) {}
 
     Type GCD(Type,Type);
     void simplify();
@@ -35,8 +35,6 @@ public:
     const Type den()const{return _den;}
     const Type num()const{return _num;}
 
-    Type den(Type);
-    Type num(Type);
 };
 
 inline rational operator+(rational, const rational&);

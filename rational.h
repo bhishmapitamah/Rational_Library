@@ -1,16 +1,16 @@
 #ifndef _cpp_rational
 #define _cpp_rational
+#include <cstdint>
 #include <iostream>
 
-typedef long long Type;
+typedef intmax_t Type;
 
 class rational{
     Type _num;
     Type _den;
-    bool sign;
 public:
-    rational() : _num(1), _den(1) {}
-    explicit rational(Type num,Type den = 1) : _num(num), _den(den) {}
+    rational() : _num(0), _den(1) {}
+    explicit rational(Type, Type = 1);
 
     Type GCD(Type,Type);
     void simplify();

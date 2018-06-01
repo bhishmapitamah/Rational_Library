@@ -1,5 +1,12 @@
 #include "rational.h"
 
+// Parameterized Constructor
+rational::rational(Type num, Type den) {
+    if(den < 0)den = -den, num = -num;
+    _den = den;
+    _num = num;
+}
+
 // Find GCD of Two numbers
 Type rational::GCD(Type a, Type b) {
     Type c;
@@ -66,7 +73,7 @@ rational rational::operator-() {
 // Overloading for output stream
 std::ostream& operator<<(std::ostream& out, const rational& print) {
     out << print._num;
-    if(print._den > 1)out << " / " << print._den;
+    if(print._den > 1)out << "/" << print._den;
     return out;
 }
 
@@ -131,11 +138,10 @@ inline bool operator!=(const rational& lhs, const rational& rhs) {
 }
 
 int main(){
-    rational obj(56,77),obj2(45,154);
-    rational obj3;
+    rational obj(56,1),obj2(45,154);
+    rational obj3 = obj2 - obj;
     //obj3/=obj2;
-    std::cout<<obj2;
-    obj3.simplify();
+    std::cout<<obj3;
     //std::cout<<obj3<<obj<<obj2;
     return 0;
 }

@@ -111,7 +111,7 @@ rational rational::operator--(int) {
 }
 
 // In place setting of numerator and denominator
-void rational::set(const Type num, const Type den) {
+void rational::set(const Type& num, const Type& den) {
     _num = num;
     _den = den;
     if(den < 0)_num = -_num, _den = -_den;
@@ -287,6 +287,9 @@ int main(){
     obj /= 34;
     std::cout << obj << std::endl << x << std::endl;
     obj.simplify();
-    std::cout << obj;
+    std::cout << obj<<std::endl;
+    obj.set(34,-52);
+    std::cout<<obj<<std::endl;
+    std::cout<<abs(obj);
     return 0;
 }/**/

@@ -118,8 +118,23 @@ std::ostream& operator<<(std::ostream& out, const rational& print) {
 }
 
 // Overloading for input stream
+// Numerator and Denominator are space seperated
 std::istream& operator>>(std::istream& in, rational& input) {
-    in >> input._num >> input._den;
+    if(!in)return in;
+    int num, den;
+    in >> num;
+    if(in.get() != '/'){
+        den = 1;
+    }
+    else {
+        in >> den;
+    }
+    input._num = num;
+    input._den = den;
+    if(den < 0){
+        input._num = -input._num;
+        input._den = -input._den;
+    }
     return in;
 }
 
@@ -143,11 +158,11 @@ inline rational operator-(rational lhs, const rational& rhs) {
     return lhs;
 }
 inline rational operator-(rational lhs, const Type& rhs) {
-    lhs += rhs;
+    lhs -= rhs;
     return lhs;
 }
 inline rational operator-(const Type& lhs, rational rhs) {
-    rhs += lhs;
+    rhs -= lhs;
     return rhs;
 }
 
@@ -157,11 +172,11 @@ inline rational operator*(rational lhs, const rational& rhs) {
     return lhs;
 }
 inline rational operator*(rational lhs, const Type& rhs) {
-    lhs += rhs;
+    lhs *= rhs;
     return lhs;
 }
 inline rational operator*(const Type& lhs, rational rhs) {
-    rhs += lhs;
+    rhs *= lhs;
     return rhs;
 }
 
@@ -171,11 +186,11 @@ inline rational operator/(rational lhs, const rational& rhs) {
     return lhs;
 }
 inline rational operator/(rational lhs, const Type& rhs) {
-    lhs += rhs;
+    lhs /= rhs;
     return lhs;
 }
 inline rational operator/(const Type& lhs, rational rhs) {
-    rhs += lhs;
+    rhs /= lhs;
     return rhs;
 }
 
@@ -250,13 +265,19 @@ inline rational abs(rational& num) {
     return (num.num() < 1 ? -num : num);
 }
 
+/*
+ * Make Changes in Cmake to run test cases in main function
+ */
 int main(){
     rational obj(56,1),obj2(45,154);
     rational obj3 = obj2 / 5;
-    //obj3/=obj2;
-    obj /= 2;
-    std::cout<<obj<<std::endl<<obj3;
-    std::cout<<std::endl<<(3 > obj);
-    //std::cout<<obj3<<obj<<obj2;
+    std::cout<<obj3;
+    obj3.simplify();
+    int x;
+    std::cin>>obj>>x;
+    obj/=34;
+    std::cout<<obj<<std::endl<<x<<std::endl;
+    obj.simplify();
+    std::cout<<obj;
     return 0;
-}
+}/**/

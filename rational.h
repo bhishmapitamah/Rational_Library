@@ -25,8 +25,13 @@ public:
     rational& operator*=(const Type&);
     rational& operator/=(const Type&);
 
-    rational operator-();
     rational& operator+();
+    rational operator-();
+    rational& operator++();
+    rational operator++(int);
+    rational& operator--();
+    rational operator--(int);
+
 
     friend std::ostream& operator<<(std::ostream&,const rational&);
     friend std::istream& operator>>(std::istream&,rational&);
@@ -79,8 +84,6 @@ inline bool operator>=(const Type&, const rational&);
 inline bool operator==(const Type&, const rational&);
 inline bool operator!=(const Type&, const rational&);
 
-inline rational abs(const rational&);
-rational pow(rational);
-
+inline rational abs(rational&);
 
 #endif

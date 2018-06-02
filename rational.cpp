@@ -88,6 +88,28 @@ rational rational::operator-() {
     return temp;
 }
 
+// Increment Operator Overloading
+rational& rational::operator++() {
+    *this += 1;
+    return *this;
+}
+rational rational::operator++(int) {
+    rational temp(*this);
+    ++*this;
+    return temp;
+}
+
+// Decrement Operator Overloading
+rational& rational::operator--() {
+    *this -= 1;
+    return *this;
+}
+rational rational::operator--(int) {
+    rational temp(*this);
+    --*this;
+    return temp;
+}
+
 // Overloading for output stream
 std::ostream& operator<<(std::ostream& out, const rational& print) {
     out << print._num;
@@ -221,6 +243,11 @@ inline bool operator!=(const rational& lhs, const Type& rhs) {
 }
 inline bool operator!=(const Type& lhs, const rational& rhs) {
     return !(lhs == rhs);
+}
+
+// Absolute value of the rational variable
+inline rational abs(rational& num) {
+    return (num.num() < 1 ? -num : num);
 }
 
 int main(){

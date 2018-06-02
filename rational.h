@@ -45,6 +45,7 @@ public:
 
     const Type den()const{return _den;}
     const Type num()const{return _num;}
+    void set(const Type, const Type);
 
 };
 

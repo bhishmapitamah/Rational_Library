@@ -110,6 +110,13 @@ rational rational::operator--(int) {
     return temp;
 }
 
+// In place setting of numerator and denominator
+void rational::set(const Type num, const Type den) {
+    _num = num;
+    _den = den;
+    if(den < 0)_num = -_num, _den = -_den;
+}
+
 // Overloading for output stream
 std::ostream& operator<<(std::ostream& out, const rational& print) {
     out << print._num;
@@ -118,7 +125,9 @@ std::ostream& operator<<(std::ostream& out, const rational& print) {
 }
 
 // Overloading for input stream
-// Numerator and Denominator are space seperated
+// Format: num/den or num
+// Example: 2/3 or 2
+// If only a single number if given denominator will be set to 1
 std::istream& operator>>(std::istream& in, rational& input) {
     if(!in)return in;
     int num, den;
@@ -269,15 +278,15 @@ inline rational abs(rational& num) {
  * Make Changes in Cmake to run test cases in main function
  */
 int main(){
-    rational obj(56,1),obj2(45,154);
+    rational obj(56,1), obj2(45,154);
     rational obj3 = obj2 / 5;
-    std::cout<<obj3;
+    std::cout << obj3;
     obj3.simplify();
     int x;
-    std::cin>>obj>>x;
-    obj/=34;
-    std::cout<<obj<<std::endl<<x<<std::endl;
+    std::cin >> obj >> x;
+    obj /= 34;
+    std::cout << obj << std::endl << x << std::endl;
     obj.simplify();
-    std::cout<<obj;
+    std::cout << obj;
     return 0;
 }/**/

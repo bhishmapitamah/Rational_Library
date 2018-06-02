@@ -20,6 +20,11 @@ public:
     rational& operator*=(const rational&);
     rational& operator/=(const rational&);
 
+    rational& operator+=(const Type&);
+    rational& operator-=(const Type&);
+    rational& operator*=(const Type&);
+    rational& operator/=(const Type&);
+
     rational operator-();
     rational& operator+();
 
@@ -31,6 +36,7 @@ public:
     explicit operator const long long() const {return ((long long)_num/_den);}
     explicit operator const float() const {return ((float)_num/_den);}
     explicit operator const double() const {return ((double)_num/_den);}
+    explicit operator const bool() const {return _num != 0;}
 
     const Type den()const{return _den;}
     const Type num()const{return _num;}
@@ -42,12 +48,36 @@ inline rational operator-(rational, const rational&);
 inline rational operator*(rational, const rational&);
 inline rational operator/(rational, const rational&);
 
+inline rational operator+(rational, const Type&);
+inline rational operator-(rational, const Type&);
+inline rational operator*(rational, const Type&);
+inline rational operator/(rational, const Type&);
+
+inline rational operator+(const Type&, rational);
+inline rational operator-(const Type&, rational);
+inline rational operator*(const Type&, rational);
+inline rational operator/(const Type&, rational);
+
 inline bool operator<(const rational&, const rational&);
 inline bool operator>(const rational&, const rational&);
 inline bool operator<=(const rational&, const rational&);
 inline bool operator>=(const rational&, const rational&);
 inline bool operator==(const rational&, const rational&);
 inline bool operator!=(const rational&, const rational&);
+
+inline bool operator<(const rational&, const Type&);
+inline bool operator>(const rational&, const Type&);
+inline bool operator<=(const rational&, const Type&);
+inline bool operator>=(const rational&, const Type&);
+inline bool operator==(const rational&, const Type&);
+inline bool operator!=(const rational&, const Type&);
+
+inline bool operator<(const Type&, const rational&);
+inline bool operator>(const Type&, const rational&);
+inline bool operator<=(const Type&, const rational&);
+inline bool operator>=(const Type&, const rational&);
+inline bool operator==(const Type&, const rational&);
+inline bool operator!=(const Type&, const rational&);
 
 inline rational abs(const rational&);
 rational pow(rational);

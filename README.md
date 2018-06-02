@@ -40,6 +40,9 @@ It has to be simplified when and where required using the inbuilt function.</p>
 <ul>
   <li>GCD function <code>int gcd = r.GCD(); // Returns the GCD of the number</code></li>
   <li>Simplify function for normalizing <code>r.simplify(); // 6/8 is simplified to 3/4</code></li>
+  <li>Set function for in place setting <code>r.set(3,4); // sets the value of r to 3/4</code></li>
+  <li>num for getting the value of numerator <code>int  num = r.num(); // returns the value of numerator</code></li>
+  <li>den for getting the value of denominator <code>int den = r.den(); // returns the value of denominator</code></li>
 </ul>
 
 <h2>Other Utility functions</h2>

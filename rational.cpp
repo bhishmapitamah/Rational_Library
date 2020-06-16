@@ -130,7 +130,7 @@ std::ostream& operator<<(std::ostream& out, const rational& print) {
 // If only a single number if given denominator will be set to 1
 std::istream& operator>>(std::istream& in, rational& input) {
     if(!in)return in;
-    int num, den;
+    Type num, den;
     in >> num;
     if(in.get() != '/'){
         den = 1;
